@@ -5,5 +5,5 @@ export default function DiariesPage() {
         <h1 className="text-2xl sm:text-3xl">Diaries</h1>
       </main>
     </div>
-  )
+  );
 }
