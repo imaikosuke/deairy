@@ -1,0 +1,87 @@
+scalar Uint
+scalar Uint32
+scalar Date
+scalar Time
+scalar DateTime
+
+"""
+ユーザを表す型
+"""
+type User {
+    """
+    ユーザID
+    """
+    id: ID!
+    """
+    ユーザ名
+    """
+    name: String!
+    """
+    メールアドレス
+    """
+    email: String!
+    """
+    ユーザの日記一覧
+    """
+    diaries: [Diary!]!
+    """
+    作成日時
+    """
+    createdAt: DateTime!
+    """
+    更新日時
+    """
+    updatedAt: DateTime!
+}
+
+"""
+日記を表す型
+"""
+type Diary {
+    """
+    日記ID
+    """
+    id: ID!
+    """
+    タイトル
+    """
+    title: String!
+    """
+    本文
+    """
+    content: String!
+    """
+    公開設定
+    """
+    visibility: DiaryVisibility!
+    """
+    タグ一覧
+    """
+    tags: [String!]!
+    """
+    作成者
+    """
+    author: User!
+    """
+    作成日時
+    """
+    createdAt: DateTime!
+    """
+    更新日時
+    """
+    updatedAt: DateTime!
+}
+
+"""
+日記の公開設定
+"""
+enum DiaryVisibility {
+    """
+    公開
+    """
+    PUBLIC
+    """
+    非公開
+    """
+    PRIVATE
+}

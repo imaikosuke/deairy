@@ -1,0 +1,91 @@
+input UpdateUserInput {
+    name: String!
+    email: String!
+}
+
+input CreateUserInput {
+    """
+    ユーザ名
+    """
+    name: String!
+    """
+    メールアドレス
+    """
+    email: String!
+}
+
+input CreateDiaryInput {
+    """
+    タイトル
+    """
+    title: String!
+    """
+    本文
+    """
+    content: String!
+    """
+    公開設定
+    """
+    visibility: DiaryVisibility!
+    """
+    タグ
+    """
+    tags: [String!]
+}
+
+input UpdateDiaryInput {
+    """
+    タイトル
+    """
+    title: String!
+    """
+    本文
+    """
+    content: String!
+    """
+    公開設定
+    """
+    visibility: DiaryVisibility!
+    """
+    タグ
+    """
+    tags: [String!]
+}
+
+type Query {
+    """
+    日記取得
+    """
+    diary(id: ID!): Diary!
+    """
+    日記一覧取得
+    """
+    diaries(userId: ID, visibility: DiaryVisibility): [Diary!]!
+    """
+    ユーザ一覧取得
+    """
+    users: [User!]!
+    """
+    ユーザ取得
+    """
+    user(id: ID!): User!
+}
+
+type Mutation {
+    """
+    ユーザ作成
+    """
+    createUser(input: CreateUserInput!): User!
+    """
+    日記作成
+    """
+    createDiary(input: CreateDiaryInput!): Diary!
+    """
+    日記更新
+    """
+    updateDiary(id: ID!, input: UpdateDiaryInput!): Diary!
+    """
+    日記削除
+    """
+    deleteDiary(id: ID!): Boolean!
+}
