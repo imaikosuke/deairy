@@ -104,3 +104,28 @@ backend/lint: ## lintを実行
 .PHONY: gen-client
 gen-client: ## FrontendのGraphQLを生成
 	cd webapp && pnpm graphql-codegen
+
+.PHONY: feat bug fix docs style opt refactor test cicd env
+feat bug fix docs style opt refactor test cicd env: ## コミットメッセージを作成
+	@if [ -z "$(filter-out $@,$(MAKECMDGOALS))" ]; then \
+		echo "Error: Commit message is required"; \
+		echo "Usage: make $@ <commit message>"; \
+		exit 1; \
+	fi
+	git commit -m "$@: $(filter-out $@,$(MAKECMDGOALS))"
+
+git-help:
+	@echo -e "\033[1;34mfeat\033[0m     : 新機能の追加"
+	@echo -e "\033[1;34mbug\033[0m      : バグの修正"
+	@echo -e "\033[1;34mfix\033[0m      : ちょっとした修正"
+	@echo -e "\033[1;34mdocs\033[0m     : ドキュメントの修正"
+	@echo -e "\033[1;34mstyle\033[0m    : UI/UXの実装や修正"
+	@echo -e "\033[1;34mopt\033[0m      : パフォーマンスの最適化"
+	@echo -e "\033[1;34mrefactor\033[0m : コードのリファクタリング"
+	@echo -e "\033[1;34mtest\033[0m     : テストの追加や既存テストの修正"
+	@echo -e "\033[1;34mcicd\033[0m     : CI/CDの追加や修正"
+	@echo -e "\033[1;34menv\033[0m      : 開発環境の設定や改善"
+	@echo ""
+
+%:
+	@:
