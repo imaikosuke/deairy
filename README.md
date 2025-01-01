@@ -113,3 +113,39 @@ deairy/
 ├── Makefile          # 開発用コマンド定義
 └── 各種設定ファイル
 ```
+
+## Gitコミットルール
+このプロジェクトでは `<type>: <commit-message>` の形式でコミットメッセージを記述します。
+
+### コミットタイプ
+| Type | 説明 |
+|------|------|
+| `feat` | 新機能の追加 |
+| `bug` | バグの修正 |
+| `fix` | ちょっとした修正 |
+| `docs` | ドキュメントの修正 |
+| `style` | UI/UXの実装や修正 |
+| `opt` | パフォーマンスの最適化 |
+| `refactor` | コードのリファクタリング |
+| `test` | テストの追加や既存テストの修正 |
+| `cicd` | CI/CDの追加や修正 |
+| `env` | 開発環境の設定や改善 |
+
+### コミットメッセージのルール
+- メッセージは英語で記述
+- 文末のピリオドは省略
+- 現在形で記述（"added"ではなく"add"を使用）
+- 変更内容を具体的に記述
+
+### コミット用Makeコマンドの使い方
+このプロジェクトではMakefileを使用してコミットを効率化しています。
+
+```bash
+# 基本形式
+make <type> <commit message>
+
+# 使用例
+make feat add user registration
+make style implement new card design
+make fix adjust button padding
+```
